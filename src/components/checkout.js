@@ -50,14 +50,16 @@ function ItemsList() {
                 <div className="item-Description">
                     <div>Item A</div>
                     <div><b>Price:</b> 50p </div>
-                    <div><b>Special Offer:</b> 3 for 1.30 </div>
+                    {/* <div><b>Special Offer:</b> 3 for 1.30 </div> */}
                 </div>
             </div>
 
             
 
-            <div className="additem">
-                
+            <div className="cart-actions">
+                <button>-</button>
+                <div>1</div>
+                <button>+</button>
                 
             </div>
         </div>
