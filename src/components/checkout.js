@@ -27,6 +27,30 @@ function ItemsList() {
         })
     }
 
+    const GetEachItemPriceTotal = (product, quantity) => {
+        const productSet = itemsData.find((item) => item.product === product);
+
+        if(!productSet) return 0;
+        
+        if(productSet.special){
+            const numberOfSpecials = Math.floor( quantity / productSet.special.quantity );
+            const remainingqty = quantity % productSet.special.quantity;
+            const specialTotal = (remainingqty * productSet.price) + (numberOfSpecials * productSet.special.price)
+            
+            // console.log(specialTotal.toFixed(2));
+            return specialTotal.toFixed(2);
+        }
+        return quantity * productSet.price;
+    }
+
+    const calculateTotalPrice = () => {
+        return Object.entries(cart).reduce(
+            (sum, [product, quantity]) => sum + Number(GetEachItemPriceTotal(product, quantity)), 0
+        )
+    }
+
+    console.log(calculateTotalPrice());
+
   return (
     <div className="itemsList-container" >
 
@@ -60,32 +84,38 @@ function ItemsList() {
         <div className="itemsList-title cart-title"> Your Cart </div>
 
         {Object.keys(cart).length === 0 ? (
-            <div> No items in cart just yet.</div>
+            <div className="cart"> No items in cart just yet.</div>
         ) : (
-            Object.entries(cart).map(([key,value]) => { 
+            <>
+            {Object.entries(cart).map(([key,value]) => { 
                 const item = itemsData.find((item) => item.product === key);
                 return (
-                    <div className="eachitem">
-                    <div className="itemName">
-                        <div id="itemDisplayImage">{key}</div>
-                        <div className="item-Description">
-                            <div>{item.name}</div>
-                            <div><b>Price:</b> {item.price} </div>
-                            {/* <div><b>Special Offer:</b> 3 for 1.30 </div> */}
-                        </div>
-                    </div>
-
                     
+                        <div className="eachitem">
+                            <div className="itemName">
+                                <div id="itemDisplayImage">{key}</div>
+                                <div className="item-Description">
+                                    <div>{item.name}</div>
+                                    <div><b>Price:</b> {GetEachItemPriceTotal(key,value)} </div>
+                                    
+                                    {/* <div><b>Special Offer:</b> 3 for 1.30 </div> */}
+                                </div>
+                            </div>
 
-                    <div className="cart-actions">
-                        <button onClick={() => removeFromCart(item.product)}>-</button>
-                        <div>{value}</div>
-                        <button onClick={() => addToCart(item.product)}>+</button>
-                        
-                    </div>
-                </div>
-                )
-            })
+                            
+
+                            <div className="cart-actions">
+                                <button onClick={() => removeFromCart(item.product)}>-</button>
+                                <div>{value}</div>
+                                <button onClick={() => addToCart(item.product)}>+</button>
+                                
+                            </div>
+                        </div>
+                  
+                )})}
+
+                <div className="cart total"><b>Total:</b> {calculateTotalPrice()}</div>
+            </>
         )}
         
       </div>
