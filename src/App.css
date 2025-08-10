@@ -1,7 +1,11 @@
 /* Check out container page */
+*{
+  box-sizing: border-box;
+}
 body{
   background-color: #eee;
   font-family: monospace;
+  
 }
 .checkoutHeader{
   background-color: #282c34;
@@ -9,6 +13,7 @@ body{
   padding: 15px 3%;
   font-size: 23px;
   font-weight: bold;
+  width: 100%;
 }
 
 .itemsList-container{
@@ -178,4 +183,26 @@ body{
 } */
 
 
+@media (max-width: 600px){
+  .itemsList-container{
+    display: block;
+    box-sizing: border-box;
+    padding: 0 10px;
+  }
+
+  .itemsList-content{
+    margin: 5% 0 0 0;
+    border-radius: 5px;
+    padding: 15px;
+  }
+  .itemsList{
+    width: 100%;
+  }
+
+  .cartdisplay{
+  width: 100%;
+  display: none;
+}
+
+}
 
