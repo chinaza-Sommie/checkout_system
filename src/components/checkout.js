@@ -6,8 +6,10 @@ import Cart from "./cart";
 function CheckoutPage() {
 
     const [cart, setCart] = useState({});
-    // const isMobile = window.innerWidth < 651;
-
+    // const [cartVisible, setCartVisible] = useState(false);
+    const [cartVisible, setCartVisible] = useState(false);
+    const isMobile = window.innerWidth < 651;
+    
     const addToCart = (product) => {
         setCart((prev) => ({
             ...prev, [product]: (prev[product] || 0) + 1,
@@ -48,12 +50,21 @@ function CheckoutPage() {
     
   return (
     <div className="itemsList-container" >
-        {/* {isMobile ? ( <>hi there</>) : (<>desktop</>)} */}
-        
-        <ItemList itemsData={itemsData} addToCart={addToCart} />
-
-        <Cart cart={cart} addToCart={addToCart} removeFromCart={removeFromCart}
-        eachItemTotal={GetEachItemPriceTotal} itemsDataSet={itemsDataSet} totalPrice={calculateTotalPrice}/>
+        {isMobile ? ( 
+            cartVisible ? (
+                <Cart cart={cart} addToCart={addToCart} removeFromCart={removeFromCart}
+                eachItemTotal={GetEachItemPriceTotal} itemsDataSet={itemsDataSet} totalPrice={calculateTotalPrice}/>
+                
+            ) : (
+                <ItemList itemsData={itemsData} addToCart={addToCart} />
+            )
+        ) : (
+            <>
+                <ItemList itemsData={itemsData} addToCart={addToCart} />
+                <Cart cart={cart} addToCart={addToCart} removeFromCart={removeFromCart}
+                eachItemTotal={GetEachItemPriceTotal} itemsDataSet={itemsDataSet} totalPrice={calculateTotalPrice}/>
+            </>
+        )}
 
         
     </div>

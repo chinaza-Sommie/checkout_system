@@ -201,7 +201,7 @@ body{
     margin-right: 10px;
   }
   .itemsList-container{
-    display: block;
+    /* display: block; */
     box-sizing: border-box;
     padding: 0 10px;
   }
@@ -227,7 +227,7 @@ body{
 
   .cartdisplay{
     width: 100%;
-    display: none;
+    /* display: none; */
   }
 
 }
