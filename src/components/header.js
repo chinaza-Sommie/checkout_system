@@ -4,6 +4,10 @@ function Header() {
       <div>
         Checkout System
       </div>
+      <div className="cartIcon">
+        <i className="fa-solid fa-cart-shopping"></i>
+      </div>
+
     </div>
   );
 }

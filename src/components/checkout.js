@@ -1,16 +1,11 @@
 import React, {useState} from "react";
+import {itemsData, itemsDataSet} from "../data/data.js"
 
-const itemsData = [
-        { product: "A", name: "item A", price: 50, special:{quantity: 3, price: 1.30}},
-        { product: "B", name: "item B", price: 30, special:{quantity: 2, price: 45}},
-        { product: "C", name: "item C", price: 20},
-        { product: "D", name: "item D", price: 15}
-    ];
 
 function ItemsList() {
+
     const [cart, setCart] = useState({});
-    
-    
+    const isMobile = window.innerWidth < 651;
 
     const addToCart = (product) => {
         setCart((prev) => ({
@@ -28,7 +23,7 @@ function ItemsList() {
     }
 
     const GetEachItemPriceTotal = (product, quantity) => {
-        const productSet = itemsData.find((item) => item.product === product);
+        const productSet = itemsDataSet[product];
 
         if(!productSet) return 0;
         
@@ -38,22 +33,21 @@ function ItemsList() {
             const specialTotal = (remainingqty * productSet.price) + (numberOfSpecials * productSet.special.price)
             
             // console.log(specialTotal.toFixed(2));
-            return specialTotal.toFixed(2);
+            return specialTotal;
         }
         return quantity * productSet.price;
     }
 
     const calculateTotalPrice = () => {
         return Object.entries(cart).reduce(
-            (sum, [product, quantity]) => sum + Number(GetEachItemPriceTotal(product, quantity)), 0
+            (sum, [product, quantity]) => sum + GetEachItemPriceTotal(product, quantity), 0
         )
     }
 
-    console.log(calculateTotalPrice());
-
   return (
     <div className="itemsList-container" >
-
+        {/* {isMobile ? ( <>hi there</>) : (<>desktop</>)} */}
+        
         <div className="itemsList-content itemsList">
             <div className="itemsList-title"> Items List </div>
             {itemsData.map((item) => (
@@ -62,9 +56,9 @@ function ItemsList() {
                         <div id="itemDisplayImage">{item.product}</div>
                         <div className="item-Description">
                             <div>{item.name}</div>
-                            <div><b>Price:</b> {item.price}p </div>
+                            <div><b>Price:</b> {item.price.toFixed(2)} </div>
                             {item.special && (
-                                <div><b>Special Offer:</b> {item.special.quantity} for {item.special.price} </div>
+                                <div><b>Special Offer:</b> {item.special.quantity} for £{(item.special.price).toFixed(2)} </div>
                             )}
                             
                         </div>
@@ -88,7 +82,7 @@ function ItemsList() {
         ) : (
             <>
             {Object.entries(cart).map(([key,value]) => { 
-                const item = itemsData.find((item) => item.product === key);
+                const item = itemsDataSet[key];
                 return (
                     
                         <div className="eachitem">
@@ -96,7 +90,7 @@ function ItemsList() {
                                 <div id="itemDisplayImage">{key}</div>
                                 <div className="item-Description">
                                     <div>{item.name}</div>
-                                    <div><b>Price:</b> {GetEachItemPriceTotal(key,value)} </div>
+                                    <div><b>Price:</b> {GetEachItemPriceTotal(key,value).toFixed(2)} </div>
                                     
                                     {/* <div><b>Special Offer:</b> 3 for 1.30 </div> */}
                                 </div>
@@ -114,7 +108,7 @@ function ItemsList() {
                   
                 )})}
 
-                <div className="cart total"><b>Total:</b> {calculateTotalPrice()}</div>
+                <div className="cart total"><b>Total:</b> {calculateTotalPrice().toFixed(2)}</div>
             </>
         )}
         

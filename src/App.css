@@ -16,6 +16,10 @@ body{
   width: 100%;
 }
 
+.checkoutHeader .cartIcon{
+  display: none;
+}
+
 .itemsList-container{
   display: flex;
   justify-content: space-between;
@@ -184,6 +188,18 @@ body{
 
 
 @media (max-width: 600px){
+  .checkoutHeader{
+    font-size: 25px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .checkoutHeader .cartIcon{
+    display: block;
+    margin-right: 10px;
+  }
   .itemsList-container{
     display: block;
     box-sizing: border-box;
@@ -199,10 +215,20 @@ body{
     width: 100%;
   }
 
+  .eachitem button{
+    width: 30%;
+    font-size: 15px;
+    padding: 12px 8px;
+  }
+
+  .item-Description{
+    font-size: 16px;
+  }
+
   .cartdisplay{
-  width: 100%;
-  display: none;
-}
+    width: 100%;
+    display: none;
+  }
 
 }
 
