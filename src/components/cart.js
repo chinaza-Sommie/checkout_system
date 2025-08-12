@@ -1,3 +1,4 @@
+
 function Cart({cart, addToCart, removeFromCart, eachItemTotal, itemsDataSet, totalPrice}) {
     return (
         <div className="itemsList-content cartdisplay">
@@ -34,7 +35,7 @@ function Cart({cart, addToCart, removeFromCart, eachItemTotal, itemsDataSet, tot
                           
                         )})}
         
-                        <div className="cart total"><b>Total:</b> {totalPrice().toFixed(2)}</div>
+                        <div className="cart total"><b>Total:</b> {totalPrice(cart).toFixed(2)}</div>
                     </>
                 )}
                 
