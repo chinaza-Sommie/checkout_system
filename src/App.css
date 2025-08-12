@@ -230,5 +230,9 @@ body{
     /* display: none; */
   }
 
+  .goBackSign:hover{
+    /* text-decoration: underline; */
+    color: white;
+  }
 }
 

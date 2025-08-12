@@ -3,13 +3,11 @@ import {itemsData, itemsDataSet} from "../data/data.js"
 import ItemList from "./itemList.js";
 import Cart from "./cart";
 
-function CheckoutPage() {
+function CheckoutPage({cartVisible}) {
 
     const [cart, setCart] = useState({});
-    // const [cartVisible, setCartVisible] = useState(false);
-    const [cartVisible, setCartVisible] = useState(false);
     const isMobile = window.innerWidth < 651;
-    
+
     const addToCart = (product) => {
         setCart((prev) => ({
             ...prev, [product]: (prev[product] || 0) + 1,
