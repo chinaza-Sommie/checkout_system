@@ -1,11 +1,16 @@
-function Header() {
+function Header({cartVisible, setCartVisible}) {
   return (
     <div className="checkoutHeader">
       <div>
         Checkout System
       </div>
-      <div className="cartIcon">
-        <i className="fa-solid fa-cart-shopping"></i>
+      <div className="cartIcon goBackSign" onClick={()=> setCartVisible(!cartVisible)}>
+        {cartVisible ? (
+          <div className=""> {`< `}back</div>
+        ): (
+          <i className="fa-solid fa-cart-shopping"></i>
+        )}
+        
       </div>
 
     </div>
