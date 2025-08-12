@@ -1,12 +1,12 @@
 import './App.css';
-import ItemsList from './components/checkout';
+import CheckoutPage from './components/checkout';
 import Header from './components/header';
 
 function App() {
   return (
     <div >
       <Header />
-      <ItemsList />
+      <CheckoutPage />
     </div>
   );
 }
