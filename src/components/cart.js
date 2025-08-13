@@ -1,5 +1,17 @@
 
-function Cart({cart, addToCart, removeFromCart, eachItemTotal, itemsDataSet, totalPrice}) {
+function Cart({cart,setCart, addToCart, removeFromCart, eachItemTotal, itemsDataSet, totalPrice}) {
+    const paymentHandler = (amount) => {
+        try {
+            resetCart();
+            alert(`Payment of £${amount} successful.`);
+        } catch (error) {
+            alert(`Something went wrong please try again`);
+        }
+    }
+
+    const resetCart = ()=>{
+        setCart({});
+    }
     return (
         <div className="itemsList-content cartdisplay">
             <div className="itemsList-title cart-title"> Your Cart </div>
@@ -36,6 +48,7 @@ function Cart({cart, addToCart, removeFromCart, eachItemTotal, itemsDataSet, tot
                         )})}
         
                         <div className="cart total"><b>Total:</b> {totalPrice(cart).toFixed(2)}</div>
+                        <button className="paymentBtn" onClick={()=> paymentHandler(totalPrice(cart).toFixed(2))}> Make Payment </button>
                     </>
                 )}
                 

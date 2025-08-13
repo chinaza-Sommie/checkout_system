@@ -153,7 +153,8 @@ body{
   font-size: 12px;
 }
 
-.cartdisplay .cart-actions button{
+.cartdisplay .cart-actions button,
+.paymentBtn{
   padding: 3px 8px;
   background-color: #61dafb;
   color: #282c34;
@@ -177,14 +178,17 @@ body{
   margin-right: 10px;
 }
 
-/* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+.paymentBtn{
+  width: 100%;
+  margin-top: 25px;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.paymentBtn:hover{
+  cursor:pointer;
+}
 
 
 @media (max-width: 600px){
