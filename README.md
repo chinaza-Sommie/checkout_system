@@ -1,5 +1,5 @@
 # Checkout System
-![Project Banner](docs/banner.png)
+![Checkout Page Banner](src/assets/checkout%20page.png)
 
 ## 📑 Table of Contents
 1. [Introduction](#-project-description)
