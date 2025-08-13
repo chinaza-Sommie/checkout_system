@@ -53,6 +53,6 @@ export const useCart = () => {
             (sum, [product, quantity]) => sum + GetEachItemPriceTotal(product, quantity), 0
         )
     }
-    return { cart, addToCart, removeFromCart,itemsData, itemsDataSet, GetEachItemPriceTotal, calculateTotalPrice, isMobile };
+    return { cart, setCart, addToCart, removeFromCart,itemsData, itemsDataSet, GetEachItemPriceTotal, calculateTotalPrice, isMobile };
 }
 

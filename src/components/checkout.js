@@ -4,7 +4,7 @@ import { useCart } from "../functions/functions";
 
 
 function CheckoutPage({cartVisible}) {   
-    const { cart, addToCart, removeFromCart, itemsData, itemsDataSet, GetEachItemPriceTotal, calculateTotalPrice, isMobile} = useCart();
+    const { cart, setCart, addToCart, removeFromCart, itemsData, itemsDataSet, GetEachItemPriceTotal, calculateTotalPrice, isMobile} = useCart();
 
     return (
         <div className="itemsList-container" >
@@ -19,7 +19,7 @@ function CheckoutPage({cartVisible}) {
             ) : (
                 <>
                     <ItemList itemsData={itemsData} addToCart={addToCart} />
-                    <Cart cart={cart} addToCart={addToCart} removeFromCart={removeFromCart}
+                    <Cart cart={cart} setCart={setCart} addToCart={addToCart} removeFromCart={removeFromCart}
                     eachItemTotal={GetEachItemPriceTotal} itemsDataSet={itemsDataSet} totalPrice={calculateTotalPrice}/>
                 </>
             )}
