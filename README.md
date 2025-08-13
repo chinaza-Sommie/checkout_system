@@ -28,8 +28,8 @@ It includes support for special promotional offers, where certain products recei
 ## Getting Started (Set-up)
 
 ```bash
-git clone https://github.com/your-username/checkout-cart.git
-cd checkout-cart
+git clone https://github.com/chinaza-Sommie/checkout_system.git
+cd checkout_system
 ```
 ### Installation
 ```bash
