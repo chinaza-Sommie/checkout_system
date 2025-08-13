@@ -48,11 +48,11 @@ describe('useCart hook', () => {
     // This test case tests price of each item (for item A with special offer available)
 
     expect(result.current.GetEachItemPriceTotal('A', 3)).toBeCloseTo(1.30, 2);
-    expect(result.current.GetEachItemPriceTotal('A', 4)).toBeCloseTo(1.80, 2); // 3-for-1.30 + 1*0.50
+    expect(result.current.GetEachItemPriceTotal('A', 4)).toBeCloseTo(1.80, 2);
 
     // This test case tests price of each item (for item B with special offer available)
     expect(result.current.GetEachItemPriceTotal('B', 2)).toBeCloseTo(0.45, 2);
-    expect(result.current.GetEachItemPriceTotal('B', 3)).toBeCloseTo(0.75, 2); // 0.45 + 0.30
+    expect(result.current.GetEachItemPriceTotal('B', 3)).toBeCloseTo(0.75, 2);
 
     // This test case tests for item C
     expect(result.current.GetEachItemPriceTotal('C', 5)).toBeCloseTo(1.0, 2);
